@@ -336,7 +336,7 @@ let instructionsSentencePresentation = {
       <img src='https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master/Caja.jpg'  class="img-instructions" />
     </div>
     <br />
-    <p>Pulse la barra espaciadora para continuar.<p>
+    <p>Pulsa la barra espaciadora para continuar.<p>
   `,
   choices: [' '],
   post_trial_gap: 500,
@@ -420,8 +420,8 @@ timeline.push(testSentencesProcedure);
 let instructionstetris = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `
-    <p>Ahora jugará al Tetris durante aproximadamente 20 minutos.</p>
-    <p>En Tetris, hay piezas de diferentes formas que caen desde la parte superior de la pantalla. <br /> Su objetivo es moverlas y girarlas para que encajen y formen líneas horizontales completas. <br /> Cuando una línea se completa, desaparece. <br /> Si las piezas se acumulan hasta llegar a la parte superior, pierde.</p> <p>Controles:</p> <strong>Flecha izquierda:</strong> Mueve la pieza a la izquierda <br /> <strong>Flecha derecha:</strong> Mueve la pieza a la derecha <br /> <strong>Flecha arriba:</strong> Gira la pieza <br /> <strong>Flecha abajo:</strong> Acelera la caída <p>Cuando aparezca la pantalla del juego, haga clic en <strong>"Play"</strong> para iniciar.</p> <p>Si pierde, seleccione <strong>"Try again"</strong> para reiniciar. <br /> Jugará de esta manera hasta que se agote el tiempo.</p> <p>Pulse la barra espaciadora para comenzar.</p>
+    <p>Ahora jugarás al Tetris durante aproximadamente 20 minutos.</p>
+    <p>En Tetris, hay piezas de diferentes formas que caen desde la parte superior de la pantalla. <br /> Tu objetivo es moverlas y girarlas para que encajen y formen líneas horizontales completas. <br /> Cuando una línea se completa, desaparece. <br /> Si las piezas se acumulan hasta llegar a la parte superior, pierde.</p> <p>Controles:</p> <strong>Flecha izquierda:</strong> Mueve la pieza a la izquierda <br /> <strong>Flecha derecha:</strong> Mueve la pieza a la derecha <br /> <strong>Flecha arriba:</strong> Gira la pieza <br /> <strong>Flecha abajo:</strong> Acelera la caída <p>Cuando aparezca la pantalla del juego, haz clic en <strong>"Play"</strong> para iniciar.</p> <p>Si pierdes, selecciona <strong>"Try again"</strong> para reiniciar. <br /> Jugarás de esta manera hasta que se agote el tiempo.</p> <p>Pulsa la barra espaciadora para comenzar.</p>
   `,
   choices: [' '],
   post_trial_gap: 500,
@@ -448,11 +448,11 @@ timeline.push(tetris);
 let instructionsObjectsImgPresentation = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `
-    <p>Ahora realizará la siguiente tarea:</p>
-    <p>Si ha visto antes el objeto, pulse la tecla '${correctKey.toUpperCase()}' (presente).</p>
-    <p>Si no ha visto antes el objeto, pulse la tecla '${incorrectKey.toUpperCase()}' (no presente).</p>
-    <p>De nuevo, le recomendamos colocar los dedos sobre las teclas ${correctKey.toUpperCase()} y ${incorrectKey.toUpperCase()} durante la tarea para no olvidarlas.</p>
-    <p>Pulse la barra espaciadora para comenzar.</p>
+    <p>Ahora realizarás la siguiente tarea:</p>
+    <p>Si has visto antes el objeto, pulsa la tecla '${correctKey.toUpperCase()}' (presente).</p>
+    <p>Si no has visto antes el objeto, pulsa la tecla '${incorrectKey.toUpperCase()}' (no presente).</p>
+    <p>De nuevo, te recomendamos colocar los dedos sobre las teclas ${correctKey.toUpperCase()} y ${incorrectKey.toUpperCase()} durante la tarea para no olvidarlas.</p>
+    <p>Pulsa la barra espaciadora para comenzar.</p>
   `,
   choices: [' '],
   post_trial_gap: 500,
