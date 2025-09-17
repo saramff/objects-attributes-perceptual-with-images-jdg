@@ -3,7 +3,7 @@
 //                                                                    //  
 ////////////////////////////////////////////////////////////////////////
 
-// import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 import { sentences, controlSentences, nonExperimentalNames } from "./objects.js";
 
 
@@ -324,7 +324,7 @@ let instructionsSentencePresentation = {
     <p>Cuando aparezca el objeto, deberás hacer lo siguiente:</p>
     </p>En algunas ocasiones, el objeto aparecerá y desaparecerá automáticamente. No debes hacer nada más que observarlo atentamente.</p>
     </p></p>
-    </p>En otras ocasiones, tras el objeto aparecerá una frase relacionada y tendrás que indicar si es o no consistente con el objeto.</p>
+    </p>En otras ocasiones, el objeto vendrá acompañado de una frase relacionada y tendrás que indicar si es o no consistente con el objeto.</p>
     <p>Si la frase es CONSISTENTE, pulse la tecla '${correctKey.toUpperCase()}' (sí).</p>
     <p>Si la frase NO ES CONSISTENTE, pulse la tecla '${incorrectKey.toUpperCase()}' (no).</p>
     <p>Debes estar muy atento a cada objeto, ya que no sabes cuándo te va a aparecer una frase relacionada y cuándo no.</p>
@@ -348,17 +348,20 @@ let sentenceRecognitionStimuli = allSentences.map((sentence) => {
   if (!sentence.name) {
     return {
       justImgStimulus: `
+        <h3 class="sentence"></h3>
         <img class="object-img" src="${sentence.img}">
       `,
       stimulus: `
         <h3 class="sentence">${sentence.sentence}</h3>
+        <img class="object-img" src="${sentence.img}">
         <div class="keys">
           <p class="${correctKey === 'a' ? 'left' : 'right'}">SÍ</p>
           <p class="${correctKey === 'a' ? 'right' : 'left'}">NO</p>
         </div>
       `,
       correct_response: sentence.correct_response,
-      stimulus_duration: null
+      stimulus_duration: null,
+      justIMg_duration: 2000,
     };
   } else {
     return {
@@ -367,7 +370,9 @@ let sentenceRecognitionStimuli = allSentences.map((sentence) => {
       `,
       stimulus: "",
       correct_response: null,
-      stimulus_duration: 0
+      stimulus_duration: 0,
+      justIMg_duration: 3500,
+
     }
   }
 });
@@ -377,7 +382,7 @@ let justImg = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: jsPsych.timelineVariable("justImgStimulus"),
   choices: "NO_KEYS", // Prevent key press
-  trial_duration: 2000, // just image duration
+  trial_duration: jsPsych.timelineVariable("justIMg_duration"), // just image duration
 };
 
 /* Sentences presentation trial */
@@ -500,29 +505,29 @@ timeline.push(testObjectsExperimentalImgProcedure);
 /**************************************************************************************/
 
 
-// const supabase = createClient(
-//   import.meta.env.VITE_SUPABASE_URL,
-//   import.meta.env.VITE_SUPABASE_API_KEY
-// );
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_API_KEY
+);
 
-// const TABLE_NAME = "experimento_objetos_atributos_perceptual_img";
+const TABLE_NAME = "experimento_objetos_atributos_perceptual_img_jdg";
 
-// async function saveData(data) {
-//   console.log(data);
-//   const { error } = await supabase.from(TABLE_NAME).insert({ data });
+async function saveData(data) {
+  console.log(data);
+  const { error } = await supabase.from(TABLE_NAME).insert({ data });
 
-//   return { error };
-// }
+  return { error };
+}
 
-// const saveDataBlock = {
-//   type: jsPsychCallFunction,
-//   func: function() {
-//     saveData(jsPsych.data.get())
-//   },
-//   timing_post_trial: 200
-// }
+const saveDataBlock = {
+  type: jsPsychCallFunction,
+  func: function() {
+    saveData(jsPsych.data.get())
+  },
+  timing_post_trial: 200
+}
 
-// timeline.push(saveDataBlock);
+timeline.push(saveDataBlock);
 
 
 
