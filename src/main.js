@@ -366,12 +366,13 @@ let sentenceRecognitionStimuli = allSentences.map((sentence) => {
   } else {
     return {
       justImgStimulus: `
+        <h3 class="sentence"></h3>
         <img class="object-img" src="${sentence.img}">
       `,
       stimulus: "",
       correct_response: null,
       stimulus_duration: 0,
-      justIMg_duration: 3500,
+      justIMg_duration: 3000,
 
     }
   }
