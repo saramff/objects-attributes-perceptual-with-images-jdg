@@ -274,6 +274,14 @@ timeline.push(demo2);
 /************************************************************************************************ */
 
 /* Preload images */
+const instructionBoxImg = "https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master/Caja.jpg";
+
+let preloadInstructionImgs = {
+  type: jsPsychPreload,
+  images: [instructionBoxImg],
+};
+timeline.push(preloadInstructionImgs);
+
 let preload = {
   type: jsPsychPreload,
   images: objectsImages,
